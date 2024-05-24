@@ -133,13 +133,14 @@ class RPC {
     this.newNonce = this.crypto.getRandomBytes(32);
     this.serverNonce = server_nonce;
 
-    const serializer = new Serializer(builderMap.mt_p_q_inner_data, {
+    const serializer = new Serializer(builderMap.mt_p_q_inner_data_dc, {
       pq: pq,
       p: p,
       q: q,
       nonce: this.nonce,
       server_nonce: this.serverNonce,
       new_nonce: this.newNonce,
+      dc: this.dc.id,
     });
 
     const data = serializer.getBytes();
